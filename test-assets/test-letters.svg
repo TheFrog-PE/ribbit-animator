@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220" width="400" height="220">
+  <g id="mascot-logo">
+    <circle cx="370" cy="30" r="14" fill="#f59e0b" />
+  </g>
+  <path d="M30 40 L30 180 L90 180 L90 150 L60 150 L60 40 Z" fill="none" stroke="#204197" stroke-width="5" />
+  <path d="M30 40 L30 180 L90 180 L90 150 L60 150 L60 40 Z" fill="#ffffff" />
+  <path d="M140 40 L140 180 L200 180 L200 150 L170 150 L170 40 Z" fill="none" stroke="#204197" stroke-width="5" />
+  <path d="M140 40 L140 180 L200 180 L200 150 L170 150 L170 40 Z" fill="#ffffff" />
+  <path d="M250 40 L310 40 L310 70 L280 70 L280 100 L305 100 L305 130 L280 130 L280 180 L250 180 Z" fill="none" stroke="#204197" stroke-width="5" />
+  <path d="M250 40 L310 40 L310 70 L280 70 L280 100 L305 100 L305 130 L280 130 L280 180 L250 180 Z" fill="#ffffff" />
+</svg>

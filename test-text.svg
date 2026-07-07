@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 150">
+  <path d="M10 10 L50 50" stroke="#204197" fill="none"/>
+  <text x="20" y="120" font-size="20" fill="#000000">Hola Mundo</text>
+  <text x="20" y="140" font-size="14" fill="#333333"><tspan>Linea A</tspan><tspan dy="16">Linea B</tspan></text>
+</svg>
