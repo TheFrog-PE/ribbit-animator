@@ -875,11 +875,11 @@ select {
   padding: 8px 14px 0;
 }
 
-/* Barras flotantes relativas al preview-container para evitar superposiciones con el canvas */
+/* Barras flotantes posicionadas afuera del preview-window */
 .presets-floating-bar-colors {
   position: absolute;
   top: 50%;
-  left: 20px; /* Anclado al borde izquierdo del preview-container */
+  left: -54px; /* Flotando afuera en el lado izquierdo */
   transform: translateY(-50%);
   background: rgba(20, 22, 33, 0.85);
   border: 1px solid var(--glass-border);
@@ -896,7 +896,7 @@ select {
 
 .presets-floating-bar-tools {
   position: absolute;
-  bottom: 24px; /* Anclado a la base inferior del preview-container */
+  bottom: -64px; /* Flotando afuera en la parte inferior */
   left: 50%;
   transform: translateX(-50%);
   background: rgba(20, 22, 33, 0.88);
@@ -915,7 +915,7 @@ select {
 .filter-floating-bar {
   position: absolute;
   top: 50%;
-  right: 20px; /* Anclado al borde derecho del preview-container */
+  right: -54px; /* Flotando afuera en el lado derecho */
   transform: translateY(-50%);
   background: rgba(20, 22, 33, 0.88);
   border: 1px solid var(--glass-border);
@@ -1372,19 +1372,19 @@ select {
     padding: 8px 16px !important;
   }
 
-  /* Posicionar las barras flotantes en los bordes del contenedor principal, sin sobreponerse */
+  /* Mantener las barras flotantes en el exterior relativo del preview-window */
   .presets-floating-bar-tools {
-    bottom: 12px !important;
+    bottom: -48px !important;
     padding: 8px 14px !important;
   }
 
   .filter-floating-bar {
-    right: 12px !important;
+    right: -48px !important;
     padding: 8px !important;
   }
 
   .presets-floating-bar-colors {
-    left: 12px !important;
+    left: -48px !important;
     padding: 8px 6px !important;
   }
 
