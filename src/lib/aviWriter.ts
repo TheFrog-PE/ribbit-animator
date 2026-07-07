@@ -188,21 +188,21 @@ export class AVIWriter {
 
     // Agregar todas las partes de forma fragmentada para evitar superar el límite de ArrayBuffer del navegador
     const blobParts: BlobPart[] = [];
-    blobParts.push(riffHeader);
-    blobParts.push(hdrlList);
-    blobParts.push(moviHeader);
+    blobParts.push(riffHeader as BlobPart);
+    blobParts.push(hdrlList as BlobPart);
+    blobParts.push(moviHeader as BlobPart);
 
     for (let i = 0; i < totalFrames; i++) {
       const f = frames[i];
       const chunkHeader = new Uint8Array(8);
       writeFourCC(chunkHeader, 0, '00dc');
       new DataView(chunkHeader.buffer).setUint32(4, f.length, true);
-      blobParts.push(chunkHeader);
-      blobParts.push(f);
+      blobParts.push(chunkHeader as BlobPart);
+      blobParts.push(f as BlobPart);
     }
 
-    blobParts.push(idxHeader);
-    blobParts.push(idxEntries);
+    blobParts.push(idxHeader as BlobPart);
+    blobParts.push(idxEntries as BlobPart);
 
     return new Blob(blobParts, { type: 'video/avi' });
   }
