@@ -620,7 +620,7 @@ select {
 
 .preview-top-bar {
   width: 100%;
-  max-width: 960px;
+  max-width: 760px; /* Alineado exactamente con el max-width de .preview-window */
   display: flex;
   align-items: center;
   gap: 12px;
@@ -1366,6 +1366,10 @@ select {
     max-width: 640px !important; /* Más angosto en laptops */
     max-height: 44vh !important; /* Más bajo en laptops */
     padding: 16px !important;
+  }
+
+  .preview-top-bar {
+    max-width: 640px !important; /* Alineado exactamente con el max-width de la mesa en laptops */
   }
 
   .preview-container {
