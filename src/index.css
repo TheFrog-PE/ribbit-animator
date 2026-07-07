@@ -1345,3 +1345,64 @@ select {
     transform: translateY(0) scale(1);
   }
 }
+
+/* ─── Optimización para Laptops y Pantallas Pequeñas (max-height: 850px) ─── */
+@media (max-height: 850px) {
+  /* Reducir altura del logo a 66px para ganar espacio vertical */
+  .app-logo {
+    height: 66px !important;
+  }
+
+  /* Ajustar padding del header para comprimirlo */
+  .app-header {
+    padding: 2px 40px !important;
+  }
+
+  /* Ajustar la altura máxima del canvas de la mesa de reproducción */
+  .preview-window {
+    max-height: calc(100vh - 160px) !important;
+    padding: 20px !important;
+  }
+
+  .preview-container {
+    padding: 10px 20px !important;
+  }
+
+  /* Subir barra de herramientas y Motion Blur exterior para evitar que se corten */
+  .presets-floating-bar-tools {
+    bottom: -48px !important;
+    padding: 8px 14px !important;
+  }
+
+  .filter-floating-bar {
+    right: -48px !important;
+    padding: 8px !important;
+  }
+
+  .presets-floating-bar-colors {
+    left: -48px !important;
+    padding: 10px 8px !important;
+  }
+
+  /* Disminuir tamaño de los presets e inputs de color */
+  .preset-dot,
+  .color-picker-wrapper {
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    min-height: 20px !important;
+  }
+
+  /* Comprimir scroll de controles y tamaño de fuentes del panel lateral */
+  .panel-section {
+    padding: 12px 14px !important;
+    gap: 8px !important;
+  }
+
+  .control-group input[type="text"],
+  .control-group input[type="number"],
+  .custom-select-trigger {
+    padding: 6px 10px !important;
+    font-size: 11px !important;
+  }
+}
