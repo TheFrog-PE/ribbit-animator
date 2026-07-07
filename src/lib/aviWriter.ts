@@ -187,7 +187,7 @@ export class AVIWriter {
     writeFourCC(riffHeader, 8, 'AVI ');
 
     // Agregar todas las partes de forma fragmentada para evitar superar el límite de ArrayBuffer del navegador
-    const blobParts: (Uint8Array)[] = [];
+    const blobParts: BlobPart[] = [];
     blobParts.push(riffHeader);
     blobParts.push(hdrlList);
     blobParts.push(moviHeader);

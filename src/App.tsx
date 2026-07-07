@@ -66,7 +66,7 @@ function App() {
     if (!parsed || !renderer) return;
     setExportProgress({ current: 0, total: 1 });
     try {
-      const blob = await exportToAvi(parsed, renderer, config, totalDuration, setExportProgress);
+      const blob = await exportToAvi(parsed, renderer, config, setExportProgress);
       const baseName = activeFile?.name.replace(/\.svg$/i, '') || 'ribbit';
       downloadBlob(blob, `${baseName}.avi`);
 
@@ -112,7 +112,7 @@ function App() {
         const tempRenderer = new FrameRenderer(docParsed.svgEl, tempLetters);
 
         // 4. Exportar
-        const blob = await exportToAvi(docParsed, tempRenderer, config, totalDuration, (progress) => {
+        const blob = await exportToAvi(docParsed, tempRenderer, config, (progress) => {
           // Normalizamos el progreso global
           // total: número total de frames del video individual
           // current: frame actual procesado del video individual

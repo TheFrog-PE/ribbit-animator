@@ -2,7 +2,6 @@ import { useLayoutEffect, useMemo } from 'react';
 import type { AnimConfig, SvgFileEntry } from '../types';
 import { parseSvgMarkup } from '../lib/svgParser';
 import { buildScene, FrameRenderer } from '../lib/frameRenderer';
-import { getTotalAnimationDuration } from '../lib/animationEngine';
 
 export function useSvgScene(activeFile: SvgFileEntry | null, config: AnimConfig) {
   const { parsed, error } = useMemo(() => {

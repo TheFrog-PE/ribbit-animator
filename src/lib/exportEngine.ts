@@ -41,7 +41,6 @@ export async function exportToAvi(
   parsed: ParsedSvg,
   renderer: FrameRenderer,
   config: AnimConfig,
-  totalDuration: number,
   onProgress: (progress: ExportProgress) => void,
 ): Promise<Blob> {
   const { svgEl, viewBox } = parsed;

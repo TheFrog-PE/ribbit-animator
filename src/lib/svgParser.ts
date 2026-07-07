@@ -124,7 +124,6 @@ function classifyAndCollect(
     // Obtenemos los valores de los atributos o estilos computados si los primeros no existen (soportando clases CSS inline/internas)
     const attrStroke = el.getAttribute('stroke');
     const attrFill = el.getAttribute('fill');
-    const attrStrokeWidth = el.getAttribute('stroke-width');
 
     const hasStroke = (attrStroke && attrStroke !== 'none' && attrStroke !== 'transparent') ||
       (!attrStroke && strokeStyle !== 'none' && strokeStyle !== '' && parseFloat(style.strokeWidth || '0') > 0);
