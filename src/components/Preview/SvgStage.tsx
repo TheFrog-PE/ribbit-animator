@@ -19,6 +19,16 @@ export function SvgStage({ svgEl, onRequestUpload, imageModeActive }: Props) {
     svgEl.setAttribute('overflow', 'visible');
     svgEl.style.overflow = 'visible';
 
+    // Forzamos al navegador a centrar y contener la escala del gráfico
+    svgEl.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+
+    // Forzamos que se escale y se contenga dentro de la mesa de reproducción sin desbordar
+    svgEl.style.maxWidth = '100%';
+    svgEl.style.maxHeight = '100%';
+    svgEl.style.width = '100%';
+    svgEl.style.height = '100%';
+    svgEl.style.objectFit = 'contain';
+
     container.appendChild(svgEl);
     return () => {
       if (svgEl.parentElement === container) container.removeChild(svgEl);

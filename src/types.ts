@@ -46,6 +46,9 @@ export interface AnimConfig {
   imageWiggleIntensity: number;
   imageShineEnabled: boolean;
   imageShineColor: string;
+
+  // Duración total del clip editable por el usuario
+  clipDuration: number;
 }
 
 export const DEFAULT_CONFIG: AnimConfig = {
@@ -92,6 +95,9 @@ export const DEFAULT_CONFIG: AnimConfig = {
   imageWiggleIntensity: 5,
   imageShineEnabled: false,
   imageShineColor: '#ffffff',
+
+  // Duración por defecto del clip
+  clipDuration: 10.0,
 };
 
 export interface PresetDef {

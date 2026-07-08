@@ -588,7 +588,7 @@ select {
   align-items: center;
   position: relative;
   background: transparent;
-  overflow: visible !important;
+  overflow: visible !important; /* Devuelve la visibilidad de los paneles de colores y dados exteriores */
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
   padding: 24px; /* Padding interior reducido */
 }
@@ -607,7 +607,6 @@ select {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  overflow: visible !important;
 }
 
 .svg-holder-empty {

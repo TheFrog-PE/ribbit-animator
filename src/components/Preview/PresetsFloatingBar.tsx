@@ -7,12 +7,13 @@ interface Props {
   config: AnimConfig;
   onChange: (patch: Partial<AnimConfig>) => void;
   originalColors: { outline: string; fill: string } | null;
+  onRandomize?: () => void;
 }
 
 const EASINGS: EasingType[] = ['backOut', 'elasticOut', 'easeOut', 'bounceOut', 'easeInOut', 'circOut'];
 const REVEALS: RevealMode[] = ['none', 'wipeUp', 'wipeDown', 'wipeLeft', 'wipeRight', 'liquidRise'];
 
-export function PresetsFloatingBar({ config, onChange, originalColors }: Props) {
+export function PresetsFloatingBar({ config, onChange, originalColors, onRandomize }: Props) {
   const randomizeAnimation = () => {
     const duration = parseFloat((0.4 + Math.random() * 0.8).toFixed(2));
     const stagger = parseFloat((0.02 + Math.random() * 0.10).toFixed(3));
@@ -39,6 +40,10 @@ export function PresetsFloatingBar({ config, onChange, originalColors }: Props) 
       fillOffset,
       writeOn
     });
+
+    if (onRandomize) {
+      onRandomize();
+    }
   };
 
   const copyConfig = () => {

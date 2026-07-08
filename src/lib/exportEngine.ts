@@ -47,8 +47,7 @@ export async function exportToAvi(
 
   const exportWidth = 960;
   const exportHeight = 540;
-  const EXPORT_VIDEO_DURATION = 10.0;
-  const totalFrames = Math.max(1, Math.ceil(EXPORT_VIDEO_DURATION * config.fps));
+  const totalFrames = Math.max(1, Math.ceil(config.clipDuration * config.fps));
 
   const originalViewBox = svgEl.getAttribute('viewBox');
   const originalWidth = svgEl.getAttribute('width');

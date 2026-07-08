@@ -126,9 +126,8 @@ export class FrameRenderer {
       this.svgEl.style.filter = '';
     }
 
-    // Forzamos overflow visible para que los elementos que salen de los límites
-    // del viewBox durante la animación no queden recortados.
-    this.svgEl.setAttribute('overflow', 'visible');
+    // Quitamos la sobreescritura forzada de overflow visible
+    // this.svgEl.setAttribute('overflow', 'visible');
 
     // Stagger normalizado: si hay muchos elementos, comprimimos el stagger
     // automáticamente para que la animación de entrada nunca dure más de 2s.
@@ -145,7 +144,7 @@ export class FrameRenderer {
     }
 
     const entranceDuration = getTotalAnimationDuration(this.letters, effectiveConfig);
-    const VISUAL_DURATION = 10.0;
+    const VISUAL_DURATION = config.clipDuration;
     const animDuration = Math.min(entranceDuration, VISUAL_DURATION / 2);
     let evalTime = t;
     if (t < animDuration) {

@@ -50,7 +50,7 @@ export function useSvgScene(activeFile: SvgFileEntry | null, config: AnimConfig)
     return new FrameRenderer(parsed.svgEl, letters);
   }, [parsed, letters]);
 
-  const totalDuration = 10.0;
+  const totalDuration = config.clipDuration;
 
   return { parsed, renderer, totalDuration, error };
 }

@@ -47,7 +47,7 @@ export function PreviewPane({
     rendererRef.current?.applyTime(t, configRef.current);
   }, []);
 
-  const { isPlaying, time, play, pause, replay } = usePlayback(totalDuration, onTick);
+  const { isPlaying, time, play, pause, replay, seek } = usePlayback(totalDuration, onTick);
 
   // Repinta el frame actual cuando cambia el renderer (nuevo archivo/modo) o la config en pausa.
   useEffect(() => {
@@ -74,16 +74,24 @@ export function PreviewPane({
       <PlaybackToolbar
         isPlaying={isPlaying}
         time={time}
+        totalDuration={totalDuration}
         onPlay={play}
         onPause={pause}
         onReplay={replay}
+        onSeek={seek}
+        onChange={onChange}
         fileLabel={currentFileLabel}
       />
 
       <div className="preview-window">
         <SvgStage svgEl={svgEl} onRequestUpload={onRequestUpload} imageModeActive={config.imageModeActive} />
 
-        <PresetsFloatingBar config={config} onChange={onChange} originalColors={originalColors} />
+        <PresetsFloatingBar
+          config={config}
+          onChange={onChange}
+          originalColors={originalColors}
+          onRandomize={replay}
+        />
         <MotionBlurToggle config={config} onChange={onChange} />
 
         {sceneError && (

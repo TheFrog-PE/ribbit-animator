@@ -1,7 +1,7 @@
 import type { ParsedLetter, ParsedSvg, SvgTextNode } from '../types';
 
-const SHAPE_SELECTOR = 'path, polygon, polyline, rect, circle, ellipse, line, image';
-const EXTRA_GROUP_HINT = /bg|background|mascot|logo|deco/i;
+const SHAPE_SELECTOR = 'path, polygon, polyline, rect, circle, ellipse, line, image, text';
+const EXTRA_GROUP_HINT = /bg|background/i;
 
 let hiddenHost: HTMLDivElement | null = null;
 
@@ -27,6 +27,8 @@ function parseViewBox(svgEl: SVGSVGElement) {
   }
   const width = parseFloat(svgEl.getAttribute('width') || '0') || 300;
   const height = parseFloat(svgEl.getAttribute('height') || '0') || 150;
+  // Si no tiene viewBox, lo inyectamos físicamente para habilitar la contención de escala del navegador
+  svgEl.setAttribute('viewBox', `0 0 ${width} ${height}`);
   return { minX: 0, minY: 0, width, height };
 }
 
@@ -204,7 +206,27 @@ export function parseSvgMarkup(svgText: string): ParsedSvg {
   host.appendChild(svgEl);
 
   try {
-    const viewBox = parseViewBox(svgEl);
+    let viewBox = parseViewBox(svgEl);
+    
+    // Calcular la verdadera caja de límites (bounding box) de los gráficos del SVG.
+    // Esto asegura que incluso si el archivo tiene un viewBox falso, chato, enorme o elementos desbordados,
+    // se reajuste al tamaño real de los píxeles dibujados.
+    try {
+      const bbox = svgEl.getBBox();
+      if (bbox.width > 0 && bbox.height > 0) {
+        // Añadir padding visual del 5% del tamaño para que no quede rasante a los bordes
+        const padX = bbox.width * 0.05;
+        const padY = bbox.height * 0.05;
+        const minX = bbox.x - padX;
+        const minY = bbox.y - padY;
+        const width = bbox.width + padX * 2;
+        const height = bbox.height + padY * 2;
+        svgEl.setAttribute('viewBox', `${minX} ${minY} ${width} ${height}`);
+        viewBox = { minX, minY, width, height };
+      }
+    } catch {
+      // Si falla getBBox (en algunos SVGs vacíos o corruptos), conservamos el parseado original
+    }
     const outlineLetters: ParsedLetter[] = []
     const fillLetters: ParsedLetter[] = [];
     const extraGroups: SVGGraphicsElement[] = [];

@@ -76,5 +76,12 @@ export function usePlayback(totalDuration: number, onTick: (t: number) => void) 
     }
   }, [totalDuration]);
 
-  return { isPlaying, time, play, pause, replay };
+  const seek = useCallback((newTime: number) => {
+    const t = Math.max(0, Math.min(totalDuration, newTime));
+    timeRef.current = t;
+    setTime(t);
+    onTickRef.current(t);
+  }, [totalDuration]);
+
+  return { isPlaying, time, play, pause, replay, seek };
 }
