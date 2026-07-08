@@ -333,10 +333,22 @@ export function parseSvgMarkup(svgText: string): ParsedSvg {
         }
       }
 
-      // Asignar el índice actual a todo el clúster (emoji/icono)
+      // Asignar el índice actual a todo el clúster (emoji/icono/letra+sombra)
+      // y calcular el centro unificado (promedio) para evitar desvíos en las rotaciones
+      let sumCx = 0;
+      let sumCy = 0;
+      for (const item of cluster) {
+        sumCx += item.info.letter.cx;
+        sumCy += item.info.letter.cy;
+      }
+      const groupCx = sumCx / cluster.length;
+      const groupCy = sumCy / cluster.length;
+
       for (const item of cluster) {
         item.assignedIndex = currentIndex;
         item.info.letter.index = currentIndex;
+        item.info.letter.cx = groupCx;
+        item.info.letter.cy = groupCy;
         const itemKey = item.info.key;
         if (itemKey) keyToIndex.set(itemKey, currentIndex);
       }
